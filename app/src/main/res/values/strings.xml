@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Alura Viagens</string>
+    <string name="especiais">Especiais</string>
+    <string name="brasil">Brasil</string>
+    <string name="cabe_alho">cabeçalho</string>
+    <string name="imagem_do_lugar">imagem do lugar</string>
 </resources>
