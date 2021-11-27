@@ -22,7 +22,7 @@ import java.util.Locale;
 public class ListaPacotesAdapter extends BaseAdapter {
 
     private final List<Pacote> pacotes;
-    private Context context;
+    private final Context context;
 
     public ListaPacotesAdapter(List<Pacote> pacotes, Context context){
 
@@ -51,15 +51,23 @@ public class ListaPacotesAdapter extends BaseAdapter {
 
         Pacote pacote = pacotes.get(position);
 
-        TextView local = viewCriada.findViewById(R.id.item_pacote_local);
-        local.setText(pacote.getLocal());
+        mostraLocal(viewCriada, pacote);
+        mostraImagem(viewCriada, pacote);
+        mostraDias(viewCriada, pacote);
+        mostraPreco(viewCriada, pacote);
 
-        ImageView imagem = viewCriada.findViewById(R.id.item_pacote_imagem);
-        Resources resources = context.getResources();
-        int IdDrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
-        Drawable drawableImagemPacote = resources.getDrawable(IdDrawable);
-        imagem.setImageDrawable(drawableImagemPacote);
+        return viewCriada;
+    }
 
+    private void mostraPreco(View viewCriada, Pacote pacote) {
+        TextView preco = viewCriada.findViewById(R.id.item_pacote_preco);
+        BigDecimal valorDoPacote = pacote.getPreco();
+        NumberFormat formatoBrasil = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
+        String moedaBrasileira = formatoBrasil.format(valorDoPacote);
+        preco.setText(moedaBrasileira);
+    }
+
+    private void mostraDias(View viewCriada, Pacote pacote) {
         TextView dias = viewCriada.findViewById(R.id.item_pacote_dias);
         int quantidadeDeDias = pacote.getDias();
         String diasEmTexto = "";
@@ -69,13 +77,18 @@ public class ListaPacotesAdapter extends BaseAdapter {
             diasEmTexto = quantidadeDeDias + " dia";
         }
         dias.setText(diasEmTexto);
+    }
 
-        TextView preco = viewCriada.findViewById(R.id.item_pacote_preco);
-        BigDecimal valorDoPacote = pacote.getPreco();
-        NumberFormat formatoBrasil = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
-        String moedaBrasileira = formatoBrasil.format(valorDoPacote);
-        preco.setText(moedaBrasileira);
+    private void mostraImagem(View viewCriada, Pacote pacote) {
+        ImageView imagem = viewCriada.findViewById(R.id.item_pacote_imagem);
+        Resources resources = context.getResources();
+        int IdDrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
+        Drawable drawableImagemPacote = resources.getDrawable(IdDrawable);
+        imagem.setImageDrawable(drawableImagemPacote);
+    }
 
-        return viewCriada;
+    private void mostraLocal(View viewCriada, Pacote pacote) {
+        TextView local = viewCriada.findViewById(R.id.item_pacote_local);
+        local.setText(pacote.getLocal());
     }
 }
