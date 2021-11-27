@@ -15,15 +15,20 @@ import java.util.List;
 
 public class ListaPacotesActivity extends AppCompatActivity {
 
+    public static final String TITULO_PACOTES = "Pacotes";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pacotes);
-        setTitle("Pacotes");
+        setTitle(TITULO_PACOTES);
+
+        configuraLista();
+    }
+
+    private void configuraLista() {
         ListView listaDePacotes = findViewById(R.id.lista_pacotes_listview);
-
         List<Pacote> pacotes = new PacoteDAO().lista();
-
         listaDePacotes.setAdapter(new ListaPacotesAdapter(pacotes, this));
     }
 }
