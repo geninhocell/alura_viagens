@@ -1,12 +1,12 @@
 package com.alura.aluraviagens.ui.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alura.aluraviagens.R;
 import com.alura.aluraviagens.model.Pacote;
@@ -16,8 +16,6 @@ import com.alura.aluraviagens.util.MoedaUtil;
 import com.alura.aluraviagens.util.ResourceUtil;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class ResumoPacoteActivity extends AppCompatActivity {
 
@@ -29,13 +27,16 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resumo_pacote);
         setTitle(TITULO_APPBAR);
 
-        Pacote pacoteSaoPaulo = new Pacote("São Paulo", "sao_paulo_sp", 2, new BigDecimal(243.99));
+        Pacote pacoteSaoPaulo = new Pacote("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
 
         mostraLocal(pacoteSaoPaulo);
         mostraImagem(pacoteSaoPaulo);
         mostraDias(pacoteSaoPaulo);
         mostraPreco(pacoteSaoPaulo);
         mostraData(pacoteSaoPaulo);
+
+        Intent intent = new Intent(this, PagamentoActivity.class);
+        startActivity(intent);
     }
 
     private void mostraData(Pacote pacote) {

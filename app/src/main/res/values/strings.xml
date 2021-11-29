@@ -4,4 +4,8 @@
     <string name="pais">Brasil</string>
     <string name="banner_inicial">banner inicial</string>
     <string name="imagem_do_lugar">imagem do lugar</string>
+    <string name="pre_o_final">Preço final:</string>
+    <string name="realizar_pagamento">Realizar pagamento</string>
+    <string name="imagem_do_pacote">imagem do pacote</string>
+    <string name="numero_do_cartao">Número do cartão</string>
 </resources>

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.ResumoPacoteActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/resumo_pacote_imagem"
@@ -16,14 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@drawable/sao_paulo_sp" />
+        tools:srcCompat="@drawable/sao_paulo_sp"
+        android:contentDescription="@string/imagem_do_pacote" />
 
     <TextView
         android:id="@+id/resumo_pacote_local"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +54,7 @@
         android:id="@+id/resumo_pacote_preco"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="textEnd"
         android:textColor="@android:color/holo_green_dark"
@@ -71,7 +71,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/resumo_pacote_preco"
         app:layout_constraintEnd_toEndOf="@+id/resumo_pacote_preco"
-        android:text="Preço final:" />
+        android:text="@string/pre_o_final" />
 
     <Button
         android:id="@+id/resumo_pacote_botao_realiza_pagamento"
@@ -83,7 +83,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/botao_redondo_laranja"
         app:backgroundTint="@null"
-        android:text="Realizar pagamento"
+        android:text="@string/realizar_pagamento"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
