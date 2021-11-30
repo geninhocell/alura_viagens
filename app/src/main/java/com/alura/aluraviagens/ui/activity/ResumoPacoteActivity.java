@@ -1,5 +1,7 @@
 package com.alura.aluraviagens.ui.activity;
 
+import static com.alura.aluraviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -29,23 +31,37 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resumo_pacote);
         setTitle(TITULO_APPBAR);
 
+        carregaPacoteRecebido();
+    }
+
+    private void carregaPacoteRecebido() {
         Intent pacoteIntent = getIntent();
-        if(pacoteIntent.hasExtra("pacote")){
-            final Pacote pacote = (Pacote) pacoteIntent.getSerializableExtra("pacote");
-
-            mostraLocal(pacote);
-            mostraImagem(pacote);
-            mostraDias(pacote);
-            mostraPreco(pacote);
-            mostraData(pacote);
-
-            Button BotaoRealizaPagamento = findViewById(R.id.resumo_pacote_botao_realiza_pagamento);
-            BotaoRealizaPagamento.setOnClickListener(v -> {
-                Intent intent = new Intent(ResumoPacoteActivity.this, PagamentoActivity.class);
-                intent.putExtra("pacote", pacote);
-                startActivity(intent);
-            });
+        if(pacoteIntent.hasExtra(CHAVE_PACOTE)){
+            final Pacote pacote = (Pacote) pacoteIntent.getSerializableExtra(CHAVE_PACOTE);
+            inicializaCampos(pacote);
+            configuraBotao(pacote);
         }
+    }
+
+    private void configuraBotao(Pacote pacote) {
+        Button BotaoRealizaPagamento = findViewById(R.id.resumo_pacote_botao_realiza_pagamento);
+        BotaoRealizaPagamento.setOnClickListener(v -> {
+            vaiParaPagamento(pacote);
+        });
+    }
+
+    private void vaiParaPagamento(Pacote pacote) {
+        Intent intent = new Intent(ResumoPacoteActivity.this, PagamentoActivity.class);
+        intent.putExtra(CHAVE_PACOTE, pacote);
+        startActivity(intent);
+    }
+
+    private void inicializaCampos(Pacote pacote) {
+        mostraLocal(pacote);
+        mostraImagem(pacote);
+        mostraDias(pacote);
+        mostraPreco(pacote);
+        mostraData(pacote);
     }
 
     private void mostraData(Pacote pacote) {

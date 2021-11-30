@@ -1,5 +1,7 @@
 package com.alura.aluraviagens.ui.activity;
 
+import static com.alura.aluraviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,15 +28,23 @@ public class ResumoCompraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resumo_compra);
         setTitle(TITULO_APPBAR);
 
-        Intent intentPacote = getIntent();
-        if(intentPacote.hasExtra("pacote")){
-            final Pacote pacote = (Pacote) intentPacote.getSerializableExtra("pacote");
+        carregaPacoteRecebido();
+    }
 
-            mostraLocal(pacote);
-            mostraImagem(pacote);
-            mostraData(pacote);
-            mostraPreco(pacote);
+    private void carregaPacoteRecebido() {
+        Intent intentPacote = getIntent();
+        if(intentPacote.hasExtra(CHAVE_PACOTE)){
+            final Pacote pacote = (Pacote) intentPacote.getSerializableExtra(CHAVE_PACOTE);
+
+            inicializaCampos(pacote);
         }
+    }
+
+    private void inicializaCampos(Pacote pacote) {
+        mostraLocal(pacote);
+        mostraImagem(pacote);
+        mostraData(pacote);
+        mostraPreco(pacote);
     }
 
     private void mostraPreco(Pacote pacote) {
