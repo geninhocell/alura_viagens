@@ -14,16 +14,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:color/holo_orange_dark" />
+        app:srcCompat="@android:color/holo_orange_dark"
+        android:contentDescription="@string/banner_inicial" />
 
     <TextView
         android:id="@+id/resumo_compra_parabens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Parabéns!"
         android:layout_margin="8dp"
+        android:text="@string/parabens"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
+        android:textColor="#455A64"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/resumo_compra_banner_inicial"
@@ -37,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Compra realizada com sucesso :)"
+        android:text="@string/compra_realizada"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -50,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Confira o resumo da compra:"
+        android:text="@string/confira_resumo"
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
